@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+alias yi='yarn install --frozen-lockfile'
+alias ys='yarn start'
