@@ -8,4 +8,6 @@ e.g.
 
 ```
 . ~/Code/Github/dotfiles/.npm
+. ~/Code/Github/dotfiles/.maven
+# etc
 ```
