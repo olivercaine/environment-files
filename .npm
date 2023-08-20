@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # Common (all NPM repos)
-alias ni='npm install'
-alias nt='npm test'
-alias ntw='npm run test:watch'
-alias ntu='npm run test -- -u'
-alias ns='npm start'
-alias nd='npm run dev'
-alias nl='npm run lint -- --quiet'
-alias nlf='npm run lint:fix'
-alias nb='npm run build'
-alias ncl='npm run storybook' # (N)PM (C)omponent (L)ibrary
-alias nhc='npm run health-check'
+alias ni='npm install'                # (N)PM (I)nstall
+alias nt='npm test'                   # (N)PM (T)est
+alias ntw='npm run test:watch'        # (N)PM (T)est (W)atch
+alias ntu='npm run test -- -u'        # (N)PM (T)est (U)pdate
+alias ns='npm start'                  # (N)PM (S)tart
+alias nd='npm run dev'                # (N)PM (R)un (D)ev
+alias nl='npm run lint -- --quiet'    # (N)PM (L)int
+alias nlf='npm run lint:fix'           # (N)PM (L)int (F)ix
+alias nb='npm run build'              # (N)PM (R)un (B)uild
+alias ncl='npm run storybook'         # (N)PM (C)omponent (L)ibrary
+alias nhc='npm run health-check'      # (N)PM (H)ealh (C)heck

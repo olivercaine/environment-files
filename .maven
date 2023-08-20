@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-alias mi='mvn install'
-alias miu='mvn install -U'
-alias mist='mvn install -DskipTests'
-alias mci='mvn clean install'
-alias mciu='mvn clean install -U'
-alias mcist='mvn clean -DskipTests install'
-alias mcistu='mvn clean -DskipTests install -U'
+alias mi='mvn install'                              # (M)aven (I)nstall
+alias miu='mvn install -U'                          # (M)aven (I)nstall with (U)pdate
+alias mist='mvn install -DskipTests'                # (M)aven (I)nstall (S)kip (T)ests
+alias mci='mvn clean install'                       # (M)aven (C)lean (I)nstall
+alias mciu='mvn clean install -U'                   # (M)aven (C)lean (I)nstall with (U)pdate
+alias mcist='mvn clean -DskipTests install'         # (M)aven (C)lean (I)nstall (S)kip (T)ests
+alias mcistu='mvn clean -DskipTests install -U'     # (M)aven (C)lean (I)nstall (S)kip (T)ests with (U)pdate
