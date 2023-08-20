@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 
-function gpristine {
+function git_pristine {
     # Reset to fresh checkout but stash all non-tracked files
     git stash --include-untracked --all
     git reset --hard
     git clean -dfx
+}
+
+function git_remove_submodule {
+  if [ -z "$1" ]; then
+    echo "Please provide the name of the submodule, e.g. remove_submodule common"
+    exit 1;
+  else
+    git submodule deinit $1
+    git rm $1
+    git commit -m "Removed submodule: $1"
+    rm -rf .git/modules/$1
+  fi
 }
 
 function git_default_branch {
