@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+alias mi='mvn install'
+alias miu='mvn install -U'
+alias mist='mvn install -DskipTests'
+alias mci='mvn clean install'
+alias mciu='mvn clean install -U'
+alias mcist='mvn clean -DskipTests install'
+alias mcistu='mvn clean -DskipTests install -U'
