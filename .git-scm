@@ -5,9 +5,7 @@ git_default_branch() {
   (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') 2>/dev/null
 }
 
-alias gcdf="git checkout $(git_default_branch) && git pull &"
-
-# https://joshtronic.com/2020/08/09/how-to-get-the-default-git-branch/
-# alias gfm='git fetch origin $(git_default_branch):$(git_default_branch)'
-# alias gmm='git merge $(git_default_branch)'
-# alias grbm='git rebase $(git_default_branch)'
+alias gcdf='git checkout $(git_default_branch) && git pull &'               # (G)it (C)heckout (D)e(f)ault
+alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (G)it (F)etch (D)e(f)ault
+alias gmdf='git merge $(git_default_branch)'                                # (G)it (M)erge (D)e(f)ault
+alias grdf='git rebase $(git_default_branch)'                               # (G)it (R)ebase (D)e(f)ault
