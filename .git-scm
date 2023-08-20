@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 
+function git_default_branch {
+  # Returns branch checked out when originally cloned ( https://joshtronic.com/2020/08/09/how-to-get-the-default-git-branch )
+  (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') 2>/dev/null
+}
+
 function git_pristine {
     # Reset to fresh checkout but stash all non-tracked files
     git stash --include-untracked --all
     git reset --hard
     git clean -dfx
+}
+
+function gmdf { # (g)it (m)erge (d)e(f)ault - merges from the branch which was checked out on clone
+  local default=$(git_default_branch)
+  git pull origin $default:$default
+  git pull
+  git merge $default --no-edit
 }
 
 function git_remove_submodule {
@@ -17,11 +29,6 @@ function git_remove_submodule {
     git commit -m "Removed submodule: $1"
     rm -rf .git/modules/$1
   fi
-}
-
-function git_default_branch {
-  # Returns branch checked out when originally cloned ( https://joshtronic.com/2020/08/09/how-to-get-the-default-git-branch )
-  (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') 2>/dev/null
 }
 
 alias gcdf='git checkout $(git_default_branch) && git pull &'               # (G)it (C)heckout (D)e(f)ault
