@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 # Common (all NPM repos)
-alias ni='npm install'                # (N)PM (I)nstall
-alias nt='npm test'                   # (N)PM (T)est
-alias ntw='npm run test:watch'        # (N)PM (T)est (W)atch
-alias ntu='npm run test -- -u'        # (N)PM (T)est (U)pdate
-alias ns='npm start'                  # (N)PM (S)tart
-alias nd='npm run dev'                # (N)PM (R)un (D)ev
-alias nl='npm run lint -- --quiet'    # (N)PM (L)int
-alias nlf='npm run lint:fix'           # (N)PM (L)int (F)ix
-alias nb='npm run build'              # (N)PM (R)un (B)uild
-alias ncl='npm run storybook'         # (N)PM (C)omponent (L)ibrary
-alias nhc='npm run health-check'      # (N)PM (H)ealh (C)heck
+alias ni='npm install'                # (n)PM (i)nstall
+alias nt='npm test'                   # (n)PM (t)est
+alias ntw='npm run test:watch'        # (n)PM (t)est (w)atch
+alias ntu='npm run test -- -u'        # (n)PM (t)est (u)pdate
+alias ns='npm start'                  # (n)PM (s)tart
+alias nd='npm run dev'                # (n)PM (r)un (d)ev
+alias nl='npm run lint -- --quiet'    # (n)PM (l)int
+alias nlf='npm run lint:fix'           # (n)PM (l)int (f)ix
+alias nb='npm run build'              # (n)PM (r)un (b)uild
+alias ncl='npm run storybook'         # (n)PM (c)omponent (l)ibrary
+alias nhc='npm run health-check'      # (n)PM (h)ealh (c)heck
 
 # Utils
 alias nv='node --version'

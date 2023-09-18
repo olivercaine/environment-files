@@ -32,14 +32,14 @@ function git_remove_submodule {
 }
 
 function get_jira_ticket_from_branch {
-  # feature/PROJ-123-some-feature -> PROJ-123
-  # anything/PROJ-123-some-feature -> PROJ-123
-  # proj-123-some-feature -> PROJ-123
+  # feature/PROJ-123-some-feature returns "PROJ-123"
+  # anything/PROJ-123-some-feature returns "PROJ-123"
+  # proj-123-some-feature returns "PROJ-123"
   TICKET=$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+[-_])?[0-9]+' | grep -Eo '(\w+[-])?[0-9]+' | tr "[:lower:]" "[:upper:]")
   echo "$TICKET"
 }
 
-alias gcdf='git checkout $(git_default_branch) && git pull &'               # (G)it (C)heckout (D)e(f)ault
-alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (G)it (F)etch (D)e(f)ault
-alias gmdf='git merge $(git_default_branch)'                                # (G)it (M)erge (D)e(f)ault
-alias grdf='git rebase $(git_default_branch)'                               # (G)it (R)ebase (D)e(f)ault
+alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (c)heckout (d)e(f)ault
+alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
+alias gmdf='git merge $(git_default_branch)'                                # (g)it (m)erge (d)e(f)ault
+alias grdf='git rebase $(git_default_branch)'                               # (g)it (r)ebase (d)e(f)ault
