@@ -12,3 +12,6 @@ alias nlf='npm run lint:fix'           # (N)PM (L)int (F)ix
 alias nb='npm run build'              # (N)PM (R)un (B)uild
 alias ncl='npm run storybook'         # (N)PM (C)omponent (L)ibrary
 alias nhc='npm run health-check'      # (N)PM (H)ealh (C)heck
+
+# Utils
+alias nv='node --version'
