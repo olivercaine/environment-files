@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set +e # Turn off the exit-on-error option
+
 git_pristine () {
     # Reset to fresh checkout but stash all non-tracked files
     git stash --include-untracked --all
@@ -31,15 +33,39 @@ git_remove_submodule () {
   fi
 }
 
-get_jira_ticket_from_branch () {
-  # feature/PROJ-123-some-feature returns "PROJ-123"
-  # anything/PROJ-123-some-feature returns "PROJ-123"
-  # proj-123-some-feature returns "PROJ-123"
+get_ticket_from_branch () { # Jira ticket format
+  # Returns "PROJ-123" in branch "anything/PROJ-123-some-feature"
+  # Returns "PROJ-123" in branch "proj-123-some-feature"
   TICKET=$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+[-_])?[0-9]+' | grep -Eo '(\w+[-])?[0-9]+' | tr "[:lower:]" "[:upper:]")
   echo "$TICKET"
+}
+
+git_commit_ticket () { # `git_commit_ticket "My new feature"`
+  local branch_ticket_number=$(get_ticket_from_branch)
+  local commit_message=${1}
+
+  if [ -z "$commit_message" ]; then
+    echo 'Commit message missing. Try the format "gct 'My commit message'"'
+    return
+  else
+    echo "Commit message: '$commit_message'"
+    if [ -z "$branch_ticket_number" ]; then
+      read "REPLY?No ticket number found in branch. Do you want to continue? (y/n): "
+      if [[ $REPLY != [Yy]* ]]; then
+        echo "Exiting the script."
+        exit 0
+      fi
+    else
+      echo "Ticket number: $branch_ticket_number"
+      commit_message="[$branch_ticket_number] $commit_message"
+    fi
+    echo "Full commit message: '$commit_message'"
+    git commit -m $commit_message
+  fi
 }
 
 alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (c)heckout (d)e(f)ault
 alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
 alias gmdf='git merge $(git_default_branch)'                                # (g)it (m)erge (d)e(f)ault
 alias grdf='git rebase $(git_default_branch)'                               # (g)it (r)ebase (d)e(f)ault
+alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
