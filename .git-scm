@@ -1,25 +1,25 @@
 #!/usr/bin/env bash
 
-function git_pristine {
+git_pristine () {
     # Reset to fresh checkout but stash all non-tracked files
     git stash --include-untracked --all
     git reset --hard
     git clean -dfx
 }
 
-function git_default_branch {
+git_default_branch () {
   # Returns branch checked out when originally cloned ( https://joshtronic.com/2020/08/09/how-to-get-the-default-git-branch )
   (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') 2>/dev/null
 }
 
-function gmdf { # (g)it (m)erge (d)e(f)ault - merges from the branch which was checked out on clone
+gmdf () { # (g)it (m)erge (d)e(f)ault - merges from the branch which was checked out on clone
   local default=$(git_default_branch)
   git pull origin $default:$default
   git pull
   git merge $default --no-edit
 }
 
-function git_remove_submodule {
+git_remove_submodule () {
   if [ -z "$1" ]; then
     echo "Please provide the name of the submodule, e.g. remove_submodule common"
     exit 1;
@@ -31,7 +31,7 @@ function git_remove_submodule {
   fi
 }
 
-function get_jira_ticket_from_branch {
+get_jira_ticket_from_branch () {
   # feature/PROJ-123-some-feature returns "PROJ-123"
   # anything/PROJ-123-some-feature returns "PROJ-123"
   # proj-123-some-feature returns "PROJ-123"
