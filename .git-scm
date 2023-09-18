@@ -2,8 +2,7 @@
 
 set +e # Turn off the exit-on-error option
 
-git_pristine () {
-    # Reset to fresh checkout but stash all non-tracked files
+git_pristine () { # Reset to fresh checkout but stash all non-tracked files
     git stash --include-untracked --all
     git reset --hard
     git clean -dfx
@@ -14,8 +13,9 @@ git_default_branch () {
   (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') 2>/dev/null
 }
 
-gmdf () { # (g)it (m)erge (d)e(f)ault - merges from the branch which was checked out on clone
+git_merge_default () { # (g)it (m)erge (d)e(f)ault - merges from the branch which was checked out on clone
   local default=$(git_default_branch)
+  echo "Merging from default branch '$default'"
   git pull origin $default:$default
   git pull
   git merge $default --no-edit
@@ -65,7 +65,7 @@ git_commit_ticket () { # `git_commit_ticket "My new feature"`
 }
 
 alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (c)heckout (d)e(f)ault
+alias gmdf='git_merge_default'                                              # (g)it (m)erge (d)e(f)ault
 alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
-alias gmdf='git merge $(git_default_branch)'                                # (g)it (m)erge (d)e(f)ault
 alias grdf='git rebase $(git_default_branch)'                               # (g)it (r)ebase (d)e(f)ault
 alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
