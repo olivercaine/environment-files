@@ -40,24 +40,25 @@ get_ticket_from_branch () { # Jira ticket format
   echo "$TICKET"
 }
 
-git_commit_ticket () { # `git_commit_ticket "My new feature"`
-  local branch_ticket_number=$(get_ticket_from_branch)
+git_commit_ticket () {
+  local branch_ticket_id=$(get_ticket_from_branch)
   local commit_message=${1}
 
   if [ -z "$commit_message" ]; then
-    echo 'Commit message missing. Try the format "gct 'My commit message'"'
+    echo 'Commit message missing. Try the following format:'
+    echo 'gct "My commit message"'
     return
   else
     echo "Commit message: '$commit_message'"
-    if [ -z "$branch_ticket_number" ]; then
-      read "REPLY?No ticket number found in branch. Do you want to continue? (y/n): "
+    if [ -z "$branch_ticket_id" ]; then
+      read "REPLY?No ticket id found in branch. Do you want to continue? (y/n): "
       if [[ $REPLY != [Yy]* ]]; then
         echo "Exiting the script."
         exit 0
       fi
     else
-      echo "Ticket number: $branch_ticket_number"
-      commit_message="[$branch_ticket_number] $commit_message"
+      echo "Ticket id: $branch_ticket_id"
+      commit_message="[$branch_ticket_id] $commit_message"
     fi
     echo "Full commit message: '$commit_message'"
     git commit -m $commit_message
