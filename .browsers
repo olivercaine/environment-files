@@ -2,4 +2,4 @@
 
 # Depends on `brew install defaultbrowser`
 alias dbc='defaultbrowser chrome'                                 # (d)efault (b)rowser (c)hrome
-alias dbb='open -a "Brave Browser" --args --make-default-browser' # (d)efault (b)rowser (b)rave
+alias dbb='open -a "Brave Browser" --args --make-default-browser' # (d)efault (b)rowser (b)rave - defaultbrowser doesn't recogise Brave as a HTTP handler
