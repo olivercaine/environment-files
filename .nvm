@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
 alias nvmu='nvm use'
+alias nvmi='nvmu && npm i'
+alias nvmci='nvmu && npm ci'
