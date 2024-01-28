@@ -6,7 +6,7 @@ Add the following to your ~/.bash_profile file to install:
 
 e.g.
 
-```
+```shell
 . ~/Code/Github/dotfiles/.git
 . ~/Code/Github/dotfiles/.git-scm
 . ~/Code/Github/dotfiles/.maven
