@@ -7,7 +7,10 @@ Add the following to your ~/.bash_profile file to install:
 e.g.
 
 ```
-. ~/Code/Github/dotfiles/.npm
+. ~/Code/Github/dotfiles/.git
+. ~/Code/Github/dotfiles/.git-scm
 . ~/Code/Github/dotfiles/.maven
-# etc
+. ~/Code/Github/dotfiles/.npm
+. ~/Code/Github/dotfiles/.nvm
+. ~/Code/Github/dotfiles/.yarn
 ```
