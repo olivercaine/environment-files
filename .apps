@@ -2,4 +2,4 @@
 
 alias ij='open -a "IntelliJ IDEA Ultimate" .'   # (i)ntelli(j)
 alias st='open -a SourceTree .'                 # (s)ource(t)ree
-alias vsc='open -a "Visual Studio Code" .'      # (v)isual (s)tudio (c)ode
+alias c='open -a "Visual Studio Code" .'        # visual studio (c)ode
