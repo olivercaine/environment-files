@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+alias o='open .'            # (o)pen in Finder
+alias cdd='cd ~/Desktop/'   # (c)hange (d)irectory to (d)esktop
