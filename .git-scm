@@ -70,3 +70,4 @@ alias gmdf='git_merge_default'                                              # (g
 alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
 alias grdf='git rebase $(git_default_branch)'                               # (g)it (r)ebase (d)e(f)ault
 alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
+alias gstu='git stash save --include-untracked'                             # (g)it (st)ash save (u)ntracked - overrides OhMyZsh git plugin which pushes, not saves
