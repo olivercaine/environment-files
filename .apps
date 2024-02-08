@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+alias c='open -a "Visual Studio Code" .'        # visual studio (c)ode
+alias doc='open -a Docker'                      # (doc)ker
 alias ij='open -a "IntelliJ IDEA Ultimate" .'   # (i)ntelli(j)
 alias st='open -a SourceTree .'                 # (s)ource(t)ree
-alias c='open -a "Visual Studio Code" .'        # visual studio (c)ode
