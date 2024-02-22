@@ -71,3 +71,4 @@ alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g
 alias grdf='git rebase $(git_default_branch)'                               # (g)it (r)ebase (d)e(f)ault
 alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
 alias gstu='git stash save --include-untracked'                             # (g)it (st)ash save (u)ntracked - overrides OhMyZsh git plugin which pushes, not saves
+alias cb='git rev-parse --abbrev-ref HEAD | tr -d "\n" | pbcopy'            # {c}opy (b)ranch
