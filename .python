@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Depends on https://github.com/pyenv/pyenv
+# Install Python versions 2 & 3:
+#   pyenv install 2.7.18
+#   pyenv install 3.12.2
+
+use_python_version() {
+    local version=${1:-3}
+    pyenv global $version
+    if [ "$version" -eq 2 ]; then
+        python --version
+    elif [ "$version" -eq 3 ]; then
+        python3 --version
+    else
+        echo "Version '${version}' does not start with 2 or 3"
+    fi
+}
+
+alias pu2="use_python_version 2" # (p)ython (u)se (2)
+alias pu3="use_python_version 3" # (p)ython (u)se (3)
