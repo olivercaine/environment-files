@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-alias ql='quick-look'        # (q)uick (l)ook at a file. Requires `macos` zsh plugin ( https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos )
+alias o='open .'        # (o)pen in Finder
+alias ql='quick-look'   # (q)uick (l)ook at a file. Requires `macos` zsh plugin ( https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos )

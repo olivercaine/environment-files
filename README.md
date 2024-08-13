@@ -9,7 +9,6 @@ e.g.
 ```shell
 . ~/Code/Github/environment-files/.apps
 . ~/Code/Github/environment-files/.assorted
-. ~/Code/Github/environment-files/.directories
 . ~/Code/Github/environment-files/.git-scm
 . ~/Code/Github/environment-files/.maven
 . ~/Code/Github/environment-files/.npm
