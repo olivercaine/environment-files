@@ -2,7 +2,7 @@
 
 # Automatically switches to correct Node version using NVM when cding into a directory. Docs: https://github.com/nvm-sh/nvm#zsh
 # To install, cd to the directory with this script and run:
-# `echo "\nsource ~${PWD/#$HOME/}/.nvm-auto-switch-node" >> ~/.zshrc`
+# `echo "\n# Auto switch Node using NVM when cding into directory \nsource ~${PWD/#$HOME/}/.nvm-auto-switch-node" >> ~/.zshrc`
 # If you get zsh output errors, try moving the source to be before where p10k.zsh in ~/.zshrc
 
 autoload -U add-zsh-hook
