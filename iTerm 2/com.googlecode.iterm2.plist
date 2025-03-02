@@ -1696,13 +1696,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.066666666666666666</real>
+				<real>0.051374062895774841</real>
 				<key>Color Space</key>
-				<string>sRGB</string>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.066666666666666666</real>
+				<real>0.051230944693088531</real>
 				<key>Red Component</key>
-				<real>0.054901960784313725</real>
+				<real>0.047860376536846161</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -1819,7 +1819,7 @@
 			<key>Horizontal Spacing</key>
 			<real>1</real>
 			<key>Icon</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Jobs to Ignore</key>
@@ -2179,6 +2179,8 @@
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
+			<key>Session Close Undo Timeout</key>
+			<integer>10</integer>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Show Status Bar</key>
