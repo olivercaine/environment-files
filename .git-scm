@@ -65,6 +65,62 @@ git_commit_ticket () {
   fi
 }
 
+repo() { # Opens the current repo in the browser
+    # Get the remote URL from git config
+    local remote_url=$(git config --get remote.origin.url)
+    
+    # Check if we got a URL
+    if [ -z "$remote_url" ]; then
+        echo "Error: Not in a git repository or no remote origin set"
+        return 1
+    fi
+
+    # Convert various URL formats to HTTPS
+    local https_url=""
+    
+    # GitHub handling
+    if [[ "$remote_url" =~ github\.com ]]; then
+        # Handle SSH format (git@github.com:user/repo.git)
+        if [[ "$remote_url" =~ ^git@github\.com: ]]; then
+            https_url="https://github.com/${remote_url#git@github.com:}"
+            https_url="${https_url%.git}"
+        # Handle HTTPS format
+        elif [[ "$remote_url" =~ ^https://github\.com/ ]]; then
+            https_url="${remote_url%.git}"
+        fi
+    
+    # Bitbucket handling
+    elif [[ "$remote_url" =~ bitbucket\.org ]]; then
+        # Handle SSH format (git@bitbucket.org:user/repo.git)
+        if [[ "$remote_url" =~ ^git@bitbucket\.org: ]]; then
+            https_url="https://bitbucket.org/${remote_url#git@bitbucket.org:}"
+            https_url="${https_url%.git}"
+        # Handle HTTPS format
+        elif [[ "$remote_url" =~ ^https://bitbucket\.org/ ]]; then
+            https_url="${remote_url%.git}"
+        fi
+    fi
+
+    # If we have a valid URL, open it
+    if [ -n "$https_url" ]; then
+        # Use appropriate command based on OS
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            open "$https_url"    # macOS
+        elif [[ "$OSTYPE" == "linux"* ]]; then
+            xdg-open "$https_url"  # Linux
+        elif [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
+            start "$https_url"    # Windows
+        else
+            echo "URL: $https_url"
+            echo "Unsupported OS, please open the URL manually"
+            return 1
+        fi
+    else
+        echo "Error: Only GitHub and Bitbucket repositories are supported"
+        return 1
+    fi
+}
+
 alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (c)heckout (d)e(f)ault
 alias gmdf='git_merge_default'                                              # (g)it (m)erge (d)e(f)ault
 alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
