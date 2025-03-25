@@ -121,6 +121,7 @@ repo() { # Opens the current repo in the browser
     fi
 }
 
+alias gcnv='git commit --no-verify -m'                                      # (g)it (c)ommit (n)o (v)erify
 alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (c)heckout (d)e(f)ault
 alias gmdf='git_merge_default'                                              # (g)it (m)erge (d)e(f)ault
 alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
