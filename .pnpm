@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Common
+alias pi='pnpm install --frozen-lockfile'   # (p)NPM (i)nstall
+alias pt='pnpm test'                        # (p)NPM (t)est
+alias ptw='pnpm run test:watch'             # (p)NPM (t)est (w)atch
+alias ptu='pnpm run test -- -u'             # (p)NPM (t)est (u)pdate
+alias ps='pnpm start'                       # (p)NPM (s)tart
+alias pd='pnpm run dev'                     # (p)NPM (r)un (d)ev
+alias pl='pnpm run lint -- --quiet'         # (p)NPM (l)int
+alias plf='pnpm run lint:fix'               # (p)NPM (l)int (f)ix
+alias pb='pnpm run build'                   # (p)NPM (r)un (b)uild
+alias pcl='pnpm run storybook'              # (p)NPM (c)omponent (l)ibrary
+alias phc='pnpm run health-check'           # (p)NPM (h)ealh (c)heck

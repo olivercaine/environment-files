@@ -12,8 +12,8 @@ e.g.
 . ~/Code/Github/environment-files/.git-scm
 . ~/Code/Github/environment-files/.maven
 . ~/Code/Github/environment-files/.npm
-. ~/Code/Github/environment-files/.pnpm
 . ~/Code/Github/environment-files/.nvm
+. ~/Code/Github/environment-files/.pnpm
 . ~/Code/Github/environment-files/.python
 . ~/Code/Github/environment-files/.yarn
 ```
