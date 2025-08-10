@@ -1696,13 +1696,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.13601455092430115</real>
+				<real>0.072469942271709442</real>
 				<key>Color Space</key>
-				<string>sRGB</string>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.074838168919086456</real>
+				<real>0.04377225786447525</real>
 				<key>Red Component</key>
-				<real>0.098762549459934235</real>
+				<real>0.052285939455032349</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>

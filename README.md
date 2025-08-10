@@ -7,6 +7,7 @@ Add the following to your ~/.bash_profile file to install:
 e.g.
 
 ```shell
+. ~/Code/Github/environment-files/.ai
 . ~/Code/Github/environment-files/.apps
 . ~/Code/Github/environment-files/.assorted
 . ~/Code/Github/environment-files/.git-scm

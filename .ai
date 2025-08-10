@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set_ollama_model_keep_alive() {
+    local model="${1:-gpt-oss:20b}"
+    local keep_alive="${2:-0}"
+
+    # Construct the JSON payload – note the escaped double quotes
+    local payload="{\"model\": \"$model\", \"keep_alive\": $keep_alive}"
+
+    # Make the request
+    curl -X POST http://localhost:11434/api/generate -d "$payload"
+}
