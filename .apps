@@ -1,6 +1,8 @@
-#!/usr/bin/env bash
+# !/usr/bin/env bash
 
-alias c='open -a "Visual Studio Code" .'        # visual studio (c)ode
+function c { open -a "/Applications/Cursor.app" "${@:-.}"; }
+function v { open -a "/Applications/Visual Studio Code.app" "${@:-.}"; }
+
 alias doc='open -a Docker'                      # (doc)ker
 alias ij='open -a "IntelliJ IDEA Ultimate" .'   # (i)ntelli(j)
 alias st='open -a SourceTree .'                 # (s)ource(t)ree
