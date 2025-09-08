@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 
+# Oh My Zsh Git plugin aliases: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
+
 set +e # Turn off the exit-on-error option
 
-git_pristine () { # Reset to fresh checkout but stash all non-tracked files
-    git stash --include-untracked --all
-    git reset --hard
-    git clean -dfx
-}
-
-git_default_branch () {
-  # Returns branch checked out when originally cloned ( https://joshtronic.com/2020/08/09/how-to-get-the-default-git-branch )
+git_default_branch () { # Returns branch checked out when originally cloned ( https://joshtronic.com/2020/08/09/how-to-get-the-default-git-branch )
   (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') 2>/dev/null
 }
 
-git_merge_default () { # (g)it (m)erge (d)e(f)ault - merges from the branch which was checked out on clone
-  local default=$(git_default_branch)
-  echo "Merging from default branch '$default'"
-  git pull origin $default:$default
+git_merge_default () { # merges from the branch which was checked out on clone
+  local defaultBranch=$(git_default_branch)
+  echo "Merging from default branch '$defaultBranch'"
+  git pull origin $defaultBranch:$defaultBranch
   git pull
-  git merge $default --no-edit
+  git merge $defaultBranch --no-edit
+}
+
+git_pristine () { # Reset to fresh checkout but stash all non-tracked files
+  git stash --include-untracked --all
+  git reset --hard
+  git clean -dfx
 }
 
 git_remove_submodule () {
@@ -33,9 +34,7 @@ git_remove_submodule () {
   fi
 }
 
-get_ticket_from_branch () { # Jira ticket format
-  # Returns "PROJ-123" in branch "anything/PROJ-123-some-feature"
-  # Returns "PROJ-123" in branch "proj-123-some-feature"
+get_ticket_from_branch () { # Returns "PROJ-123" in branch "anything/PROJ-123-some-feature". "PROJ-123" in branch "proj-123-some-feature".
   TICKET=$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+[-_])?[0-9]+' | grep -Eo '(\w+[-])?[0-9]+' | tr "[:lower:]" "[:upper:]")
   echo "$TICKET"
 }
@@ -65,7 +64,7 @@ git_commit_ticket () {
   fi
 }
 
-repo() { # Opens the current repo in the browser
+git_repo() { # Opens the current repo in the browser
     # Get the remote URL from git config
     local remote_url=$(git config --get remote.origin.url)
     
@@ -121,11 +120,58 @@ repo() { # Opens the current repo in the browser
     fi
 }
 
+git_add_commit_push_all() {
+    local commit_message=${1}
+    if [ -z "$commit_message" ]; then
+        echo 'Commit message missing. Try the following format:'
+        echo 'gcpa "My commit message"'
+        return
+    else
+        echo "Committing and pushing all changes with message: '$commit_message'"
+        git commit --all --no-verify --message "$commit_message"
+        git push
+    fi
+}
+
+git_add_commit_push_all_verify() {
+    local commit_message=${1}
+    if [ -z "$commit_message" ]; then
+        echo 'Commit message missing. Try the following format:'
+        echo 'gcpa "My commit message"'
+        return
+    else
+        echo "Adding, committing and pushing all changes with message: '$commit_message'"
+        git add --all
+        git commit --all --message "$commit_message"
+        git push
+    fi
+}
+
+# Commits
+alias gc='git commit -m'                                                    # (g)it (c)ommit
 alias gcnv='git commit --no-verify -m'                                      # (g)it (c)ommit (n)o (v)erify
-alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (c)heckout (d)e(f)ault
+alias gca='git commit --all -m'                                             # (g)it (c)ommit (a)ll
+alias gcanv='git commit --all --no-verify -m'                               # (g)it (c)ommit (a)ll (n)o (v)erify
+
+# Push
+alias gpnv='git push --no-verify'                                           # (g)it (p)ush (n)o (v)erify
+
+# Commit & Push
+# alias gcam='git commit --all --no-verify -m'                                # (g)it (c)ommit (a)ll (m)essage
+# alias gcamv='git commit --all -m'                                           # (g)it (c)ommit (a)ll (m)essage (v)erify
+# alias gacpa="git_add_commit_push_all"                                       # (g)it (a)dd (c)ommit (p)ush (a)ll
+# alias gacpav="git_add_commit_push_all_verify"                               # (g)it (a)dd (c)ommit (p)ush (a)ll (v)erify
+# alias gcp='git commit --no-verify -m'                                       # (g)it (c)ommit (n)o (v)erify
+
+# Default branch
+alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (s)witch (d)e(f)ault
 alias gmdf='git_merge_default'                                              # (g)it (m)erge (d)e(f)ault
+alias grbdf='git rebase $(git_default_branch)'                              # (g)it (r)ebase (b)ranch (d)e(f)ault
 alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
-alias grdf='git rebase $(git_default_branch)'                               # (g)it (r)ebase (d)e(f)ault
+
+# Miscellaneous
+# alias gpristine='git reset --hard && git clean --force -dfx'                
+alias gssu='git stash save --include-untracked'                             # (g)it (st)ash (s)ave including (u)ntracked - alternative to OhMyZsh git plugin which pushes rather than saves
 alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
-alias gstu='git stash save --include-untracked'                             # (g)it (st)ash save (u)ntracked - overrides OhMyZsh git plugin which pushes, not saves
+alias repo='git_repo'                                                       # open the repo in browser
 alias cb='git rev-parse --abbrev-ref HEAD | tr -d "\n" | pbcopy'            # {c}opy (b)ranch
