@@ -170,7 +170,7 @@ alias grbdf='git rebase $(git_default_branch)'                              # (g
 alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
 
 # Miscellaneous
-# alias gpristine='git reset --hard && git clean --force -dfx'                
+# alias gpristine='git reset --hard && git clean --force -dfx'              # Stash first           
 alias gssu='git stash save --include-untracked'                             # (g)it (st)ash (s)ave including (u)ntracked - alternative to OhMyZsh git plugin which pushes rather than saves
 alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
 alias repo='git_repo'                                                       # open the repo in browser
