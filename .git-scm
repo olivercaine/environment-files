@@ -146,6 +146,10 @@ git_commit_all_and_push_no_verify() {
     fi
 }
 
+# Branches
+alias gco='git checkout'                                                    # (g)it (c)heck(o)ut
+alias gcb='git checkout -b'                                                 # (g)it (c)heck(o)ut (b)ranch
+
 # Commits
 alias gc='git commit -m'                                                    # (g)it (c)ommit
 alias gcnv='git commit --no-verify -m'                                      # (g)it (c)ommit (n)o (v)erify
