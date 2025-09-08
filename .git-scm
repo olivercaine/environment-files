@@ -120,29 +120,28 @@ git_repo() { # Opens the current repo in the browser
     fi
 }
 
-git_add_commit_push_all() {
+git_commit_all_and_push() {
     local commit_message=${1}
     if [ -z "$commit_message" ]; then
         echo 'Commit message missing. Try the following format:'
-        echo 'gcpa "My commit message"'
+        echo 'gcap "My commit message"'
         return
     else
         echo "Committing and pushing all changes with message: '$commit_message'"
-        git commit --all --no-verify --message "$commit_message"
+        git commit --all --message "$commit_message"
         git push
     fi
 }
 
-git_add_commit_push_all_verify() {
+git_commit_all_and_push_no_verify() {
     local commit_message=${1}
     if [ -z "$commit_message" ]; then
         echo 'Commit message missing. Try the following format:'
-        echo 'gcpa "My commit message"'
+        echo 'gcapanv "My commit message"'
         return
     else
         echo "Adding, committing and pushing all changes with message: '$commit_message'"
-        git add --all
-        git commit --all --message "$commit_message"
+        git commit --all --no-verify --message "$commit_message"
         git push
     fi
 }
@@ -157,11 +156,8 @@ alias gcanv='git commit --all --no-verify -m'                               # (g
 alias gpnv='git push --no-verify'                                           # (g)it (p)ush (n)o (v)erify
 
 # Commit & Push
-# alias gcam='git commit --all --no-verify -m'                                # (g)it (c)ommit (a)ll (m)essage
-# alias gcamv='git commit --all -m'                                           # (g)it (c)ommit (a)ll (m)essage (v)erify
-# alias gacpa="git_add_commit_push_all"                                       # (g)it (a)dd (c)ommit (p)ush (a)ll
-# alias gacpav="git_add_commit_push_all_verify"                               # (g)it (a)dd (c)ommit (p)ush (a)ll (v)erify
-# alias gcp='git commit --no-verify -m'                                       # (g)it (c)ommit (n)o (v)erify
+alias gcap='git_commit_all_and_push'
+alias gcapanv='git_commit_all_and_push_no_verify'
 
 # Default branch
 alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (s)witch (d)e(f)ault
