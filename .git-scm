@@ -151,6 +151,7 @@ alias gc='git commit -m'                                                    # (g
 alias gcnv='git commit --no-verify -m'                                      # (g)it (c)ommit (n)o (v)erify
 alias gca='git commit --all -m'                                             # (g)it (c)ommit (a)ll
 alias gcanv='git commit --all --no-verify -m'                               # (g)it (c)ommit (a)ll (n)o (v)erify
+alias gcundo='git reset --soft HEAD^'                                       # (g)it (c)ommit (undo)
 
 # Push
 alias gpnv='git push --no-verify'                                           # (g)it (p)ush (n)o (v)erify
