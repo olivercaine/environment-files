@@ -161,6 +161,7 @@ alias gcundo='git reset --soft HEAD^'                                       # (g
 alias gl='git pull'                                                         # (g)it (p)ull
 
 # Push
+alias gp='git push'                                                         # (g)it (p)ush
 alias gpnv='git push --no-verify'                                           # (g)it (p)ush (n)o (v)erify
 
 # Commit & Push
