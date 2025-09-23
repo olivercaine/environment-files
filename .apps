@@ -1,8 +1,11 @@
 # !/usr/bin/env bash
 
-function c { open -a "/Applications/Cursor.app" "${@:-.}"; }
+# IDEs
 function v { open -a "/Applications/Visual Studio Code.app" "${@:-.}"; }
+function k { open -a "/Applications/Kiro.app" "${@:-.}"; }
+function c { open -a "/Applications/Cursor.app" "${@:-.}"; }
+alias ij='open -a "IntelliJ IDEA Ultimate" .'                               # (i)ntelli(j)
 
-alias doc='open -a Docker'                      # (doc)ker
-alias ij='open -a "IntelliJ IDEA Ultimate" .'   # (i)ntelli(j)
-alias st='open -a SourceTree .'                 # (s)ource(t)ree
+# Tools
+function st { open -a SourceTree "${@:-.}"; }                               # (s)ource(t)ree
+alias doc='open -a Docker'                                                  # (doc)ker
