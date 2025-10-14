@@ -180,3 +180,4 @@ alias gssu='git stash save --include-untracked'                             # (g
 alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
 alias repo='git_repo'                                                       # open the repo in browser
 alias cb='git rev-parse --abbrev-ref HEAD | tr -d "\n" | pbcopy'            # {c}opy (b)ranch
+alias gpristine=git_pristine                                                # {g}it pristine (OhMyZsh equivalent)
