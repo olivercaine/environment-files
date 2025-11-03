@@ -24,6 +24,8 @@
 	<integer>32768</integer>
 	<key>AitermURL</key>
 	<string>https://api.openai.com/v1/responses</string>
+	<key>AlwaysOpenWindowAtStartup</key>
+	<true/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Argonaut</key>
@@ -1473,7 +1475,7 @@
 	<key>Default Bookmark Guid</key>
 	<string>C5AAE192-56C2-4C6D-BD93-5633A1F78374</string>
 	<key>DimBackgroundWindows</key>
-	<false/>
+	<true/>
 	<key>DimInactiveSplitPanes</key>
 	<true/>
 	<key>DimOnlyText</key>
@@ -1718,13 +1720,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.072469942271709442</real>
+				<real>0.084985099732875824</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.04377225786447525</real>
+				<real>0.074641130864620209</real>
 				<key>Red Component</key>
-				<real>0.052285939455032349</real>
+				<real>0.076769180595874786</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -2415,7 +2417,7 @@
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.24552563713592235</real>
+	<real>0.25</real>
 	<key>StatusBarPosition</key>
 	<integer>1</integer>
 	<key>TabStyleWithAutomaticOption</key>
