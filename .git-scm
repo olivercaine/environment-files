@@ -120,42 +120,28 @@ git_repo() { # Opens the current repo in the browser
     fi
 }
 
-git_commit_all_and_push() {
-    local commit_message=${1}
-    if [ -z "$commit_message" ]; then
-        echo 'Commit message missing. Try the following format:'
-        echo 'gcap "My commit message"'
-        return
-    else
-        echo "Committing and pushing all changes with message: '$commit_message'"
-        git commit --all --message "$commit_message"
-        git push
-    fi
-}
-
-git_commit_all_and_push_no_verify() {
-    local commit_message=${1}
-    if [ -z "$commit_message" ]; then
-        echo 'Commit message missing. Try the following format:'
-        echo 'gcapanv "My commit message"'
-        return
-    else
-        echo "Adding, committing and pushing all changes with message: '$commit_message'"
-        git commit --all --no-verify --message "$commit_message"
-        git push
-    fi
+git_switch_to_existing_or_new_branch () {
+  local branch_name=$1
+  if git show-ref --verify --quiet refs/heads/$branch_name; then
+    # echo "Switching to existing branch '$branch_name'"
+    git switch $branch_name
+  else
+    # echo "Switching to new branch '$branch_name'"
+    git switch -c $branch_name
+  fi
 }
 
 # Branches
-alias gco='git checkout'                                                    # (g)it (c)heck(o)ut
-alias gcb='git checkout -b'                                                 # (g)it (c)heck(o)ut (b)ranch
+alias gs='git_switch_to_existing_or_new_branch'                             # (g)it (s)witch
+alias gse='git switch'                                                      # (g)it (s)witch (e)xisting branch
+alias gsn='git switch -c'                                                   # (g)it (s)witch (n)ew branch
 
 # Commits
 alias gc='git commit -m'                                                    # (g)it (c)ommit
 alias gcnv='git commit --no-verify -m'                                      # (g)it (c)ommit (n)o (v)erify
-alias gca='git commit --all -m'                                             # (g)it (c)ommit (a)ll
-alias gcanv='git commit --all --no-verify -m'                               # (g)it (c)ommit (a)ll (n)o (v)erify
-alias gcundo='git reset --soft HEAD^'                                       # (g)it (c)ommit (undo)
+alias gca='git add . && git commit -m'                                      # (g)it (c)ommit (a)ll
+alias gcanv='git add . && git commit --no-verify -m'                        # (g)it (c)ommit (a)ll (n)o (v)erify
+alias gcu='git reset --soft HEAD^'                                          # (g)it (c)ommit (u)ndo
 
 # Pull
 alias gl='git pull'                                                         # (g)it (p)ull
@@ -164,19 +150,15 @@ alias gl='git pull'                                                         # (g
 alias gp='git push'                                                         # (g)it (p)ush
 alias gpnv='git push --no-verify'                                           # (g)it (p)ush (n)o (v)erify
 
-# Commit & Push
-alias gcap='git_commit_all_and_push'
-alias gcapanv='git_commit_all_and_push_no_verify'
-
 # Default branch
-alias gcdf='git checkout $(git_default_branch) && git pull &'               # (g)it (s)witch (d)e(f)ault
+alias gsdf='git switch $(git_default_branch) && git pull &'                 # (g)it (s)witch (d)e(f)ault
 alias gmdf='git_merge_default'                                              # (g)it (m)erge (d)e(f)ault
 alias grbdf='git rebase $(git_default_branch)'                              # (g)it (r)ebase (b)ranch (d)e(f)ault
 alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g)it (f)etch (d)e(f)ault
 
 # Miscellaneous
-# alias gpristine='git reset --hard && git clean --force -dfx'              # Stash first           
-alias gssu='git stash save --include-untracked'                             # (g)it (st)ash (s)ave including (u)ntracked - alternative to OhMyZsh git plugin which pushes rather than saves
+# # alias gpristine='git reset --hard && git clean --force -dfx'            # Stash first           
+# alias gssu='git stash save --include-untracked'                           # (g)it (st)ash (s)ave including (u)ntracked - alternative to OhMyZsh git plugin which pushes rather than saves
 alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
 alias repo='git_repo'                                                       # open the repo in browser
 alias cb='git rev-parse --abbrev-ref HEAD | tr -d "\n" | pbcopy'            # {c}opy (b)ranch
