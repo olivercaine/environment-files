@@ -123,10 +123,8 @@ git_repo() { # Opens the current repo in the browser
 git_switch_to_existing_or_new_branch () {
   local branch_name=$1
   if git show-ref --verify --quiet refs/heads/$branch_name; then
-    # echo "Switching to existing branch '$branch_name'"
     git switch $branch_name
   else
-    # echo "Switching to new branch '$branch_name'"
     git switch -c $branch_name
   fi
 }
@@ -159,6 +157,7 @@ alias gfdf='git fetch origin $(git_default_branch):$(git_default_branch)'   # (g
 # Miscellaneous
 # # alias gpristine='git reset --hard && git clean --force -dfx'            # Stash first           
 # alias gssu='git stash save --include-untracked'                           # (g)it (st)ash (s)ave including (u)ntracked - alternative to OhMyZsh git plugin which pushes rather than saves
+alias gstash='git stash --include-untracked --all -m'                       # (g)it (s)tash
 alias gct='git_commit_ticket'                                               # (g)it (c)ommit (t)icket
 alias repo='git_repo'                                                       # open the repo in browser
 alias cb='git rev-parse --abbrev-ref HEAD | tr -d "\n" | pbcopy'            # {c}opy (b)ranch
