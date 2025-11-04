@@ -122,11 +122,22 @@ git_repo() { # Opens the current repo in the browser
 
 git_switch_to_existing_or_new_branch () {
   local branch_name=$1
-  if git show-ref --verify --quiet refs/heads/$branch_name; then
-    git switch $branch_name
-  else
-    git switch -c $branch_name
+
+  # Check if branch exists locally
+  if git show-ref --verify --quiet refs/heads/"$branch_name"; then
+    git switch "$branch_name"
+    return 0
   fi
+
+  # Check if branch exists on remote
+  if git ls-remote --heads --exit-code origin "$branch_name" > /dev/null 2>&1; then
+    git fetch origin "$branch_name":"$branch_name"
+    git switch "$branch_name"
+    return 0
+  fi
+
+  # Otherwise, create new local branch
+  git switch -c "$branch_name"
 }
 
 # Branches
