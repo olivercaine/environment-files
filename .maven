@@ -7,3 +7,5 @@ alias mci='mvn clean install'                       # (m)aven (c)lean (i)nstall
 alias mciu='mvn clean install -U'                   # (m)aven (c)lean (i)nstall with (u)pdate
 alias mcist='mvn clean -DskipTests install'         # (m)aven (c)lean (i)nstall (s)kip (t)ests
 alias mcistu='mvn clean -DskipTests install -U'     # (m)aven (c)lean (i)nstall (s)kip (t)ests with (u)pdate
+alias mtu='mvn surefire:test'                       # (m)aven (t)est (u)nit
+alias mti='mvn failsafe:verify'                     # (m)aven (t)est (i)ntegration
