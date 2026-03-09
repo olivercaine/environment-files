@@ -10,8 +10,10 @@ use_python_version() {
     pyenv global $version
     if [ "$version" -eq 2 ]; then
         python --version
+        pyenv version
     elif [ "$version" -eq 3 ]; then
         python3 --version
+        pyenv version
     else
         echo "Version '${version}' does not start with 2 or 3"
     fi

@@ -4,7 +4,7 @@
 function v { open -a "/Applications/Visual Studio Code.app" "${@:-.}"; }
 function k { open -a "/Applications/Kiro.app" "${@:-.}"; }
 function c { open -a "/Applications/Cursor.app" "${@:-.}"; }
-alias ij='open -a "IntelliJ IDEA Ultimate" .'                               # (i)ntelli(j)
+alias ij='open -a "IntelliJ IDEA" .'                               # (i)ntelli(j)
 
 # Tools
 function st { open -a SourceTree "${@:-.}"; }                               # (s)ource(t)ree
